@@ -9,7 +9,7 @@ import org.springframework.stereotype.*;
 @SpringBootApplication
 public class BeaconFinderServiceApp {
 
-  @RequestMapping("/test")
+  @RequestMapping("/")
   @ResponseBody
   String home() {
     return "BeaconFinderService is running...";
