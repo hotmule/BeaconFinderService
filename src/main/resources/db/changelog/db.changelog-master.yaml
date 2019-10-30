@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: hotmule
+      changes:
+        - createTable:
+            tableName: beacon
+            columns:
+              - column:
+                  name: mac
+                  type: varchar(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: uuid
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: major
+                  type: int
+              - column:
+                  name: minor
+                  type: int
+              - column:
+                  name: rssi
+                  type: int
+              - column:
+                  name: distance
+                  type: float
