@@ -6,9 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 import ru.hotmule.beaconfinderservice.db.models.Beacon;
+import ru.hotmule.beaconfinderservice.db.models.BeaconSync;
 
 @RestController
 @RequestMapping("/beacons")
@@ -31,10 +33,14 @@ public class BeaconController {
   }
 
   @RequestMapping(value = "/new", method = RequestMethod.POST)
-  public ResponseEntity<LocalDateTime> update(@RequestBody Beacon beacon) {
+  public ResponseEntity<BeaconSync> update(@RequestBody Beacon beacon) {
     //repository.save(beacon);
 
-    return new ResponseEntity<>(LocalDateTime.now(), HttpStatus.OK);
+    BeaconSync sync = new BeaconSync();
+    sync.setMac(beacon.getMac());
+    sync.setDate(Calendar.getInstance().getTime());
+
+    return new ResponseEntity<>(sync, HttpStatus.OK);
   }
 
   @RequestMapping
