@@ -38,7 +38,7 @@ public class BeaconController {
 
     BeaconSync sync = new BeaconSync();
     sync.setMac(beacon.getMac());
-    sync.setDate(Calendar.getInstance().getTime());
+    sync.setDate(LocalDateTime.now());
 
     return new ResponseEntity<>(sync, HttpStatus.OK);
   }
