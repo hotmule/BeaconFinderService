@@ -8,8 +8,16 @@ public class BeaconSync {
 
     private LocalDateTime date;
 
+    public String getMac() {
+        return mac;
+    }
+
     public void setMac(String mac) {
         this.mac = mac;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
     }
 
     public void setDate(LocalDateTime date) {
