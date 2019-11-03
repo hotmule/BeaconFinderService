@@ -23,21 +23,17 @@ public class BeaconController {
     this.repository = repository;
   }
 
-  @RequestMapping(value = "/{mac}", method = RequestMethod.GET)
-  public ResponseEntity<Beacon> get(@PathVariable("mac") String mac) {
-    Beacon beacon = repository.findOne(mac);
-    if (null == beacon) {
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-    }
-    return new ResponseEntity<>(beacon, HttpStatus.OK);
-  }
-
   @RequestMapping(value = "/new", method = RequestMethod.POST)
   public ResponseEntity<BeaconSync> update(@RequestBody Beacon beacon) {
-    //repository.save(beacon);
+    repository.save(beacon);
+
+    Beacon savedBeacon = repository.findOne(beacon.getMac());
+
+    if (null == savedBeacon)
+      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
     BeaconSync sync = new BeaconSync();
-    sync.setMac(beacon.getMac());
+    sync.setMac(savedBeacon.getMac());
     sync.setDate(Calendar.getInstance().getTime());
 
     return new ResponseEntity<>(sync, HttpStatus.OK);
