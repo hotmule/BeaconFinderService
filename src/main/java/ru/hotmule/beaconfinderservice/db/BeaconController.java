@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -28,9 +30,9 @@ public class BeaconController {
   }
 
   @RequestMapping(value = "/new", method = RequestMethod.POST)
-  public ResponseEntity<Beacon> update(@RequestBody Beacon beacon) {
-    repository.save(beacon);
-    return get(beacon.getMac());
+  public Date update(@RequestBody Beacon beacon) {
+    //repository.save(beacon);
+    return Calendar.getInstance().getTime();
   }
 
   @RequestMapping
