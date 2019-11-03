@@ -33,7 +33,7 @@ public class BeaconController {
   }
 
   @RequestMapping(value = "/new", method = RequestMethod.POST)
-  public @ResponseBody ResponseEntity<BeaconSync> update(@RequestBody Beacon beacon) {
+  public ResponseEntity<BeaconSync> update(@RequestBody Beacon beacon) {
     //repository.save(beacon);
 
     BeaconSync sync = new BeaconSync();
