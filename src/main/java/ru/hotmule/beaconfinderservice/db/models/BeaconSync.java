@@ -1,12 +1,12 @@
 package ru.hotmule.beaconfinderservice.db.models;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class BeaconSync {
 
     private String mac;
 
-    private LocalDateTime date;
+    private Date date;
 
     public String getMac() {
         return mac;
@@ -16,11 +16,11 @@ public class BeaconSync {
         this.mac = mac;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 }
